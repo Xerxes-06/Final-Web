@@ -96,6 +96,13 @@ sidebar.addEventListener('mouseenter', function () {
 })
 
 
+/*===== LINK ACTIVE  =====*/ 
+const linkColor = document.querySelectorAll('.sidebar-link')
+function colorLink(){
+  linkColor.forEach(l=> l.classList.remove('active'))
+  this.classList.add('active')
+}
+linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
 
 // PROFILE DROPDOWN
@@ -115,7 +122,7 @@ imgProfile.addEventListener('click', function () {
 
 
 // BIO TABS
-let tabs = document.querySelector(".bio");
+let tabs = document.querySelector(".bio-content");
 let tabHeader = tabs.querySelector(".bio-tab");
 let tabHeaderElements = tabs.querySelectorAll(".bio-tab-filter");
 let tabBody = tabs.querySelector(".bio-data");
@@ -128,6 +135,6 @@ for(let i=0;i<tabHeaderElements.length;i++){
         tabHeaderElements[i].classList.add("bio-active");
         tabBody.querySelector(".bio-active").classList.remove("bio-active");
         tabBodyElements[i].classList.add("bio-active");
-        tabIndicator.style.left = `${i*50}%`;
+        tabIndicator.style.left = `${i*33}%`;
     });
 }

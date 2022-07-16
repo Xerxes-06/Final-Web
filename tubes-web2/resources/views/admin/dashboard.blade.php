@@ -36,11 +36,10 @@
     @endif
     <div class="table-data">
         <div class="order">
-            
             <table>
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>ID</th>
                         <th>Nama Lengkap</th>
                         <th>NIM</th>
                         <th>Alamat Email</th>
@@ -50,12 +49,12 @@
                 <tbody>
                     @foreach ($biodatas as $biodata)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $biodata->id }}</td>
                             <td>{{ $biodata->nama_lengkap }}</td>
                             <td>{{ $biodata->nim }}</td>
                             <td>{{ $biodata->email }}</td>
                             <td>
-                                <a href="#"><i class='bx bx-show primary'></i></a>
+                                <a href="{{ route('admin.biodata.show', $biodata->id) }}"><i class='bx bx-show primary'></i></a>
                                 <a href="{{ route('admin.biodata.edit', $biodata->id) }}"><i class='bx bx-edit-alt warning'></i></a>
                                 <form method="POST" action="{{ route('admin.biodata.destroy', $biodata->id) }}">
                                     @method('delete')

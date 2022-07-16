@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Member</title>
-</head>
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-                
-                {{-- alert here --}}
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                
-                <form action="{{ route('member.login.auth') }}" method="POST">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+        href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+        rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{{ asset('asset/css/style2.css') }}" />
+        <title>Kelompok 2 | Login</title>
+    </head>
+    <body>
+        <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form action="{{ route('member.login.auth') }}" method="POST" class="sign-in-form">
                     @csrf
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
+                    <h2 class="title">Welcome Back!</h2>
+                    <div class="input-field">
+                        <i class="bx bx-envelope"></i>
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Email">
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
+                    <span class="error-input">{{ $errors->first('email') }}</span>
+                    <div class="input-field">
+                        <i class="bx bx-lock-alt"></i>
+                        <input type="password" name="password" placeholder="Password">
                     </div>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
+                    <span class="error-input">{{ $errors->first('password') }}</span>
+                    <button type="submit" value="Login" class="btn solid">Masuk</button>
+                    <span class="input-link">Belum punya akun? <a href="{{ route('member.register') }}">Daftar</a></span>
                 </form>
             </div>
-            <!-- /.login-card-body -->
         </div>
-    </div>
-    <!-- /.login-box -->
-</body>
+        <div class="panels-container">
+            <div class="panel left-panel">
+            <div class="content">
+                <h1>Always <span>live your life</span> <br> with your biography in mind</h1>
+            </div>
+            <img src="{{ asset('asset/img/user.png') }}" class="image">
+            </div>
+        </div>
+        </div>
+    </body>
 </html>

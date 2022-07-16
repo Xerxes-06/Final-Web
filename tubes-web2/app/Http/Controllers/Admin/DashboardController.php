@@ -126,4 +126,21 @@ class DashboardController extends Controller
         Biodata::find($id)->delete();
         return redirect()->route('admin.dashboard')->with('success', 'Biodata berhasil dihapus');
     }
+
+    public function show($id)
+    {
+        $biodata = Biodata::find($id);
+        return view('admin.biodata-show', ['biodata' => $biodata]);
+    }
+
+    public function about()
+    {
+        return view('admin.about');
+    }
+
+    public function profile($id)
+    {
+        $biodata = Biodata::find($id);
+        return view('admin.profile', ['biodata' => $biodata]);
+    }
 }
